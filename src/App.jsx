@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import Home from "./pages/Home";
 import Root from "./pages/Root";
 import Header from "./components/Header";
@@ -13,6 +14,13 @@ import PageNotFound from "./pages/PageNotFound";
 import PeopleInfoPage from "./pages/PeopleInfoPage";
 import CharacterInfoPage from "./pages/CharacterInfoPage";
 import CharactersPage from "./pages/CharactersPage";
+
+const pageTransition = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
+  transition: { duration: 0.3 }
+};
 
 const App = () => {
   const isSidebarOpen = useSidebarStore((state) => state.isSidebarOpen);
@@ -31,18 +39,56 @@ const App = () => {
         ></div>
         {!path && <Header />}
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Root />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/anime/:id" element={<DetailPage />} />
-          <Route path="/animes/:category/:query?" element={<ListPage />} />
-          <Route path="/search" element={<SearchResult />} />
-          <Route path="/watch/:id" element={<WatchPage />} />
-          <Route path="/characters/:id" element={<CharactersPage />} />
-          <Route path="/people/:id" element={<PeopleInfoPage />} />
-          <Route path="/character/:id" element={<CharacterInfoPage />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Root />} />
+            <Route path="/home" element={
+              <motion.div {...pageTransition}>
+                <Home />
+              </motion.div>
+            } />
+            <Route path="/anime/:id" element={
+              <motion.div {...pageTransition}>
+                <DetailPage />
+              </motion.div>
+            } />
+            <Route path="/animes/:category/:query?" element={
+              <motion.div {...pageTransition}>
+                <ListPage />
+              </motion.div>
+            } />
+            <Route path="/search" element={
+              <motion.div {...pageTransition}>
+                <SearchResult />
+              </motion.div>
+            } />
+            <Route path="/watch/:id" element={
+              <motion.div {...pageTransition}>
+                <WatchPage />
+              </motion.div>
+            } />
+            <Route path="/characters/:id" element={
+              <motion.div {...pageTransition}>
+                <CharactersPage />
+              </motion.div>
+            } />
+            <Route path="/people/:id" element={
+              <motion.div {...pageTransition}>
+                <PeopleInfoPage />
+              </motion.div>
+            } />
+            <Route path="/character/:id" element={
+              <motion.div {...pageTransition}>
+                <CharacterInfoPage />
+              </motion.div>
+            } />
+            <Route path="*" element={
+              <motion.div {...pageTransition}>
+                <PageNotFound />
+              </motion.div>
+            } />
+          </Routes>
+        </AnimatePresence>
       </main>
     </>
   );

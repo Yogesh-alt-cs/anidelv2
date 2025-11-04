@@ -6,17 +6,17 @@ import MiniPoster from "../components/MiniPoster";
 
 const DynamicLayout = ({ title, data, endpoint }) => {
   return (
-    <div className=" col-span-12 md:col-span-6 mt-5 xl:col-span-3">
-      <Heading className="mb-2">{title}</Heading>
-      <div className="items bg-lightbg rounded-md px-2 py-2 h-auto w-full flex flex-col gap-3">
+    <div className="col-span-12 md:col-span-6 mt-5 xl:col-span-3">
+      <Heading className="mb-3">{title}</Heading>
+      <div className="items glass rounded-2xl px-4 py-4 h-auto w-full flex flex-col border border-violet-500/10">
         {data && data.map((item) => <MiniPoster key={item.id} item={item} />)}
-        <div className="more my-3">
+        <div className="more my-2 mt-4">
           <Link
-            className="flex hover:text-primary items-center gap-2"
+            className="flex hover:text-primary items-center gap-2 text-sm font-medium transition-colors group"
             to={`/animes/${endpoint}`}
           >
             <span>View More</span>
-            <FaAngleRight />
+            <FaAngleRight className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>

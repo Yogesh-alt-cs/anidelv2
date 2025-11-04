@@ -6,27 +6,30 @@ import "./index.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
 
 const queryCLient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryCLient}>
-    <StrictMode>
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </StrictMode>
+    <ThemeProvider>
+      <StrictMode>
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </StrictMode>
+    </ThemeProvider>
   </QueryClientProvider>
 );
