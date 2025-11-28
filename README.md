@@ -1,38 +1,48 @@
-# Watanuki
+# Kamanime (Frontend)
 
+Kamanime is a lightweight anime discovery frontend built with Vite and React.
 
-**Watanuki** is a modern, sleek anime streaming web application built with **React** and styled using **Tailwind CSS**. The app is designed to provide anime enthusiasts with a seamless and enjoyable streaming experience.
+Author: karma hacks
 
----
+## Overview
 
-## Features
+- Provides browsing, searching, and watching anime content.
+- Uses a separate API backend (`kamanime-API`) for data.
 
-- 🌟 **Beautiful UI**: Minimalistic and responsive design powered by Tailwind CSS.
-- 🔍 **Search & Discover**: Find your favorite anime with ease.
-- 🎥 **Stream Anime**: High-quality streaming for your favorite shows.
-- 📋 **Watchlist**: Keep track of the anime you want to watch later.
-- 🌙 **Dark Mode**: Enjoy a stunning dark theme for late-night binging.
-- 📱 **Responsive Design**: Optimized for both desktop and mobile devices.
+## Requirements
 
----
+- Node.js 18+ (or compatible)
+- pnpm / npm / yarn
 
-## Demo
+## Setup
 
-Check out a live demo here: [Watanuki Live Demo](https://watanuki.vercel.app) (Add the link to your deployed app)
+1. Install dependencies
 
----
+```powershell
+cd kamanime
+npm install
+```
 
-## Tech Stack
+2. Start development server
 
-- **Frontend**: React
-- **Styling**: Tailwind CSS
-- **State Management**: React Context API / Redux (mention whichever you're using)
-- **API**: Integration with [Anime APIs](https://github.com/yahyaMomin/hianime-API) or other anime databases (if applicable)
+```powershell
+npm run dev
+```
 
----
+3. Build for production
 
-## Installation
+```powershell
+npm run build
+```
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/yahyamomin/watanuki.git
+## Project Structure
+
+- `src/` — main app source
+- `components/` — UI components
+- `layouts/` — page layouts
+- `pages/` — route pages
+- `services/` — API hooks
+
+## Notes
+
+The frontend expects the API to run from `kamanime-API`. Configure `src/config/config.js` to point to the API if needed.
