@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import AZ from "../layouts/AZ";
-import { FaInstagram, FaDiscord, FaHeart } from "react-icons/fa6";
+import { FaInstagram, FaHeart } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -31,7 +31,7 @@ const Footer = () => {
 
         <div className="disclaimer flex flex-col justify-center items-center gap-4">
           <p className="text-sm text-center text-gray-400 max-w-2xl">
-            Kamanime does not store any files on our servers. We only provide
+            Anidel does not store any files on our servers. We only provide
             links to media hosted on third-party services.
           </p>
 
@@ -42,24 +42,15 @@ const Footer = () => {
           </div>
 
           <p className="text-gray-500 text-sm">
-            © {currentYear} Kamanime. All rights reserved.
+            © {currentYear} Anidel. All rights reserved.
           </p>
 
           {/* Social Icons */}
           <div className="flex justify-center items-center gap-6 mt-2">
-            <motion.a
-              href="https://discord.gg/pAcf7RGxuy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-primary text-2xl transition-colors"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <FaDiscord />
-            </motion.a>
+
 
             <motion.a
-              href="https://www.instagram.com/kamanime.xyz?igsh=NW5rMm5obTM5aHA="
+              href="https://www.instagram.com/imtysonjvke?igsh=YXd0aGUwbXp5MGRi"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-primary text-2xl transition-colors"
