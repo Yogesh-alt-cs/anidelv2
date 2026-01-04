@@ -37,7 +37,11 @@ const WatchPage = () => {
   }, [ep, episodes, setSearchParams]);
 
   if (isError) {
-    return <PageNotFound />;
+    return (
+      <div className="text-white text-center mt-20">
+        Error loading episode data. Please try again later.
+      </div>
+    );
   }
 
   if (!episodes) {
@@ -101,17 +105,15 @@ const WatchPage = () => {
         <div className="input w-full mt-2 flex items-end justify-end gap-3 text-end">
           <div className="btns bg-btnbg flex mx-2 rounded-child">
             <button
-              className={`row item p-2 ${
-                layout === "row" ? "bg-primary text-black" : undefined
-              }`}
+              className={`row item p-2 ${layout === "row" ? "bg-primary text-black" : undefined
+                }`}
               onClick={() => setLayout("row")}
             >
               <MdTableRows size={"20px"} />
             </button>
             <button
-              className={`column item p-2 ${
-                layout === "column" ? "bg-primary text-black" : undefined
-              }`}
+              className={`column item p-2 ${layout === "column" ? "bg-primary text-black" : undefined
+                }`}
               onClick={() => setLayout("column")}
             >
               <HiMiniViewColumns size={"20px"} />
@@ -119,11 +121,10 @@ const WatchPage = () => {
           </div>
         </div>
         <ul
-          className={`episodes max-h-[50vh] py-4 px-2 overflow-scroll bg-lightbg grid gap-1  md:gap-2 ${
-            layout === "row"
+          className={`episodes max-h-[50vh] py-4 px-2 overflow-scroll bg-lightbg grid gap-1  md:gap-2 ${layout === "row"
               ? " grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
               : " grid-cols-5 md:grid-cols-10"
-          }`}
+            }`}
         >
           {episodes?.map((episode) => (
             <Episodes

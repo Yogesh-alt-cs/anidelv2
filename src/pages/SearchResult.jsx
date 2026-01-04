@@ -19,7 +19,7 @@ const SearchResult = () => {
     return (
       <div className="flex justify-center items-center h-dvh">
         <h1 className="text-red-300">
-          search result not found with keyword - {keyword}
+          Error loading search results: {isError?.message || "Unknown error"}. Please try again.
         </h1>
       </div>
     );

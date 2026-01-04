@@ -44,7 +44,11 @@ const ListPage = () => {
     useInfiniteApi(endpoint);
 
   if (isError) {
-    return <PageNotFound />;
+    return (
+      <div className="text-white text-center mt-20">
+        Error loading anime list. Please try again later.
+      </div>
+    );
   }
   const pages = data?.pages;
 

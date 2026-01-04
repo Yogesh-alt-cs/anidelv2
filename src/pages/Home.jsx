@@ -32,7 +32,11 @@ const Home = () => {
 
   if (isError) {
     notify("error", error.message);
-    return;
+    return (
+      <div className="text-white text-center mt-20 text-xl font-bold">
+        Error loading data: {error.message}. Please try refreshing the page.
+      </div>
+    );
   }
   return (
     <div className="relative">

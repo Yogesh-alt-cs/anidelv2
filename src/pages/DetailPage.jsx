@@ -34,7 +34,11 @@ const DetailPage = () => {
   const data = response?.data;
 
   if (isError) {
-    return <PageNotFound />;
+    return (
+      <div className="text-white text-center mt-20">
+        Error loading anime details. Please try again later.
+      </div>
+    );
   }
 
   return (
