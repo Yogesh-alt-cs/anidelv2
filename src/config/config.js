@@ -1,7 +1,7 @@
 const config = {
-  serverUrl: import.meta.env.VITE_APP_SERVERURL,
+  serverUrl: import.meta.env.VITE_APP_SERVERURL || "/api",
   localUrl: import.meta.env.VITE_APP_LOCALURL || "http://localhost:3030/api/v1",
-  proxyUrl: import.meta.env.VITE_APP_PROXYURL,
+  proxyUrl: import.meta.env.VITE_APP_PROXYURL || "/api",
 };
 
 export default config;
