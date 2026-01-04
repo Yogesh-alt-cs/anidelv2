@@ -50,62 +50,63 @@ const Home = () => {
         />
         <meta property="og:title" content="Anidel - Modern Anime Streaming" />
       </Helmet>
-      {isLoading ? (
-        <Loader className="h-[100dvh]" />
-      ) : (
-        <>
-          <HeroBanner slides={data?.data?.spotlight} />
-          <div className="xl:mx-10">
-            <TrendingLayout data={data?.data?.trending} />
-            <div className="grid mx-2 grid-cols-12 gap-4 my-5">
-              <DynamicLayout
-                title="Top Airing"
-                endpoint="top-airing"
-                data={data?.data?.topAiring}
-              />
-              <DynamicLayout
-                title="Most Popular"
-                endpoint="most-popular"
-                data={data?.data?.mostPopular}
-              />
-              <DynamicLayout
-                title="Most Favorite"
-                endpoint="most-favorite"
-                data={data?.data?.mostFavorite}
-              />
-              <DynamicLayout
-                title="Latest Completed"
-                endpoint="completed"
-                data={data?.data?.latestCompleted}
-              />
-            </div>
-            <div className="row grid my-10 gap-2 justify-center grid-cols-12 sm:mx-2">
-              <div className="left col-span-12 xl:col-span-9">
-                <MainLayout
-                  title="Latest Episode"
-                  endpoint="recently-updated"
-                  data={data?.data?.latestEpisode}
-                />
-                <MainLayout
-                  title="New Added"
-                  endpoint="recently-added"
-                  data={data?.data?.newAdded}
-                />
-                <MainLayout
-                  title="Top Upcoming"
-                  endpoint="top-upcoming"
-                  data={data?.data?.topUpcoming}
-                />
-              </div>
-              <div className="right col-span-12 xl:col-span-3">
-                <GenresLayout />
-                <Top10Layout />
-              </div>
-            </div>
-            <Footer />
+      <HeroBanner slides={data?.data?.spotlight} isLoading={isLoading} />
+      <div className="xl:mx-10">
+        <TrendingLayout data={data?.data?.trending} isLoading={isLoading} />
+        <div className="grid mx-2 grid-cols-12 gap-4 my-5">
+          <DynamicLayout
+            title="Top Airing"
+            endpoint="top-airing"
+            data={data?.data?.topAiring}
+            isLoading={isLoading}
+          />
+          <DynamicLayout
+            title="Most Popular"
+            endpoint="most-popular"
+            data={data?.data?.mostPopular}
+            isLoading={isLoading}
+          />
+          <DynamicLayout
+            title="Most Favorite"
+            endpoint="most-favorite"
+            data={data?.data?.mostFavorite}
+            isLoading={isLoading}
+          />
+          <DynamicLayout
+            title="Latest Completed"
+            endpoint="completed"
+            data={data?.data?.latestCompleted}
+            isLoading={isLoading}
+          />
+        </div>
+        <div className="row grid my-10 gap-2 justify-center grid-cols-12 sm:mx-2">
+          <div className="left col-span-12 xl:col-span-9">
+            <MainLayout
+              title="Latest Episode"
+              endpoint="recently-updated"
+              data={data?.data?.latestEpisode}
+              isLoading={isLoading}
+            />
+            <MainLayout
+              title="New Added"
+              endpoint="recently-added"
+              data={data?.data?.newAdded}
+              isLoading={isLoading}
+            />
+            <MainLayout
+              title="Top Upcoming"
+              endpoint="top-upcoming"
+              data={data?.data?.topUpcoming}
+              isLoading={isLoading}
+            />
           </div>
-        </>
-      )}
+          <div className="right col-span-12 xl:col-span-3">
+            <GenresLayout />
+            <Top10Layout />
+          </div>
+        </div>
+        <Footer />
+      </div>
     </div>
   );
 };

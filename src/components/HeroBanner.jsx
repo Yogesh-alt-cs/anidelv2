@@ -17,7 +17,9 @@ import "./hero.css";
 import SoundsInfo from "./SoundsInfo";
 import { Link } from "react-router-dom";
 
-const HeroBanner = ({ slides }) => {
+import Skeleton from "./Skeleton";
+
+const HeroBanner = ({ slides, isLoading }) => {
   return (
     <Swiper
       speed={250}
@@ -30,7 +32,23 @@ const HeroBanner = ({ slides }) => {
       navigation={true}
       className="slider h-[40vh] pt-10 mb-5 sm:h-[40vh] md:h-[50vh] xl:h-[calc(100vh-300px)]"
     >
-      {slides &&
+      {isLoading ? (
+        <SwiperSlide className="relative h-full overflow-hidden bg-backGround">
+          <div className="content w-full h-full flex items-end pb-10 px-10">
+            <div className="w-full max-w-2xl">
+              <Skeleton className="h-6 w-32 mb-4" />
+              <Skeleton className="h-12 w-3/4 mb-6" />
+              <Skeleton className="h-4 w-full mb-2" />
+              <Skeleton className="h-4 w-full mb-6" />
+              <div className="flex gap-4">
+                <Skeleton className="h-10 w-32 rounded-3xl" />
+                <Skeleton className="h-10 w-32 rounded-3xl" />
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      ) : (
+        slides &&
         slides.map((item) => (
           <SwiperSlide
             key={item.id}
@@ -95,7 +113,8 @@ const HeroBanner = ({ slides }) => {
               </div>
             </div>
           </SwiperSlide>
-        ))}
+        ))
+      )}
     </Swiper>
   );
 };

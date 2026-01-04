@@ -6,8 +6,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Link } from "react-router-dom";
 import Heading from "../components/Heading";
+import Skeleton from "../components/Skeleton";
 
-const TrendingLayout = ({ data }) => {
+const TrendingLayout = ({ data, isLoading }) => {
   return (
     <div className="trending mt-5">
       <Heading className="mb-2">Trending</Heading>
@@ -20,9 +21,14 @@ const TrendingLayout = ({ data }) => {
           1320: { slidesPerView: 6 },
         }}
       >
-        {data &&
-          data.map((item) => (
-            <SwiperSlide key={item.id}>
+        {(isLoading ? [...Array(10)] : data || []).map((item, index) => (
+          <SwiperSlide key={isLoading ? index : item.id}>
+            {isLoading ? (
+              <div className="item flex flex-col items-center overflow-hidden px-1 md:px-2">
+                <Skeleton className="w-full h-0 pb-[150%] mb-2" />
+                <Skeleton className="w-3/4 h-4" />
+              </div>
+            ) : (
               <div className="item flex flex-col items-center overflow-hidden px-1 md:px-2">
                 <Link
                   to={`/anime/${item.id}`}
@@ -45,8 +51,9 @@ const TrendingLayout = ({ data }) => {
                   {item.title}
                 </h2>
               </div>
-            </SwiperSlide>
-          ))}
+            )}
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
